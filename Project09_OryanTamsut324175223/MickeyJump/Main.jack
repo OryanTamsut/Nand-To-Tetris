@@ -1,0 +1,46 @@
+class Main {
+
+    /** Initializes a MickeyJump game and starts running it. */
+    function void main() {
+        var MickeyJumpGame game;
+        var int key;
+        do MickeyJumpGame.newInstance();
+        let game = MickeyJumpGame.getInstance();
+        let key = Keyboard.keyPressed();
+       //the game rules
+        do Output.moveCursor(1,20);
+        do Output.printString("--Game rules-- ");
+        do Output.moveCursor(4,1);
+        do Output.printString("You must be careful of the poisoned yellow cheese that is");
+        do Output.moveCursor(5,1);
+        do Output.printString("thrown at you,");
+        do Output.moveCursor(7,1);
+        do Output.printString("there are 2 types of yellow cheese: one at ground level - ");
+        do Output.moveCursor(8,1);
+        do Output.printString("it is avoided by pressing the up arrow");
+        do Output.moveCursor(9,1);
+        do Output.printString("and one higher than it is avoided by pressing the down arrow. ");
+        do Output.moveCursor(11,1);
+        do Output.printString("Every time the mouse collides with the cheese the number of");
+        do Output.moveCursor(12,1);
+        do Output.printString("lives decreases.");
+        do Output.moveCursor(14,1);
+        do Output.printString("from time to time you get a life-heart as a gift, to collect ");
+        do Output.moveCursor(15,1);
+        do Output.printString("them you have to press the down arrow.");
+        do Output.moveCursor(17,1);
+        do Output.printString("Note that the speed of the game increases with the stages.");
+        do Output.moveCursor(19,1);
+        do Output.printString("When do you win? When reaching 10,000 points.");
+        do Output.moveCursor(20,1);
+        do Output.printString("Successfully! press enter to start");
+        while(~(key=128)){
+             let key = Keyboard.keyPressed();
+        }
+        do Screen.clearScreen();  
+
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

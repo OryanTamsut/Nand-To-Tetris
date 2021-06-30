@@ -1,0 +1,485 @@
+class MickeyJumpGame {
+
+    static MickeyJumpGame instance; // the singelton, a MickeyJump game instance     
+    
+    field Mickey mickey; //the mickey
+    
+    field int lifes; //the game's life
+    field Heart heartNow;
+
+    field int score; 
+    field int nextChange; //the next time to go to the next level
+
+    field Cheese c1; 
+    field Cheese c2; 
+    field Cheese c3;
+    field Heart giftHeart;
+
+    field boolean isc1; //is c1 show in the screen
+    field boolean isc2; //is c2 show in the screen
+    field boolean isc3; //is c3 show in the screen
+    field boolean isHeart;//is heartGift in the screen
+
+    field boolean whichCtoOn1; //the next cheese that c1 show in the screen 
+    field boolean whichCtoOn2;//the next cheese that c2 shoe in the screen 
+
+    field boolean isC1Crush; //is mickey crush with c1 in this time
+    field boolean isC2Crush; //is mickey crush with c2 in this time
+    field boolean isC3Crush; //is mickey crush with c3 in this time
+    field boolean isHeartCrush;//is mickey crush with the heart
+
+    field int nextHeart;//the next time to show the giftHeart
+    static int finishGameScore;//the time to finish the game
+
+    constructor MickeyJumpGame new() {
+        //initalize the game varieble
+        do initalize();
+        return this;
+    }
+
+    method void initalize(){
+        do Screen.clearScreen();
+        let mickey=Mickey.new();
+
+        let c1=Cheese.new(150);
+        let c2=Cheese.new(150);
+        let c3=Cheese.new(130);
+
+        let score=0;
+        let nextChange=500;
+        let nextHeart=1000;
+
+        let isc1=true;
+        let isc2=false;
+        let isc3=false;
+        let isHeart=false;
+
+        let isC1Crush=false;
+        let isC2Crush=false;
+        let isC3Crush=false;
+        let isHeartCrush=false;
+
+        let whichCtoOn1=true;
+        let whichCtoOn2=true;
+
+        let heartNow=Heart.new(10,380,3);
+        
+        let giftHeart=Heart.new(230,480,1);
+
+        let finishGameScore=10000;
+
+        let lifes=3;
+        return;
+    }
+    /** Deallocates the object's memory. */
+    method void dispose() {
+        do mickey.dispose();
+        do c1.dispose();
+        do c2.dispose();
+        do c3.dispose();
+        do heartNow.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Creates an instance of MickeyJump game, and stores it. */
+    function void newInstance() {
+        let instance = MickeyJumpGame.new();
+        return;
+    }
+    
+    /** Returns the single instance of this MickeyJump game. */
+    function MickeyJumpGame getInstance() {
+        return instance;
+    }
+
+    /** Draw heart according to the game's life*/
+    method void drawHeart(int addOrRemove){
+    
+        do Output.moveCursor(1,40);
+        do Output.printString("lifes: ");
+        do heartNow.clear();
+        if(addOrRemove=1){
+            do heartNow.removeHeart();
+        }
+        if(addOrRemove=2){
+            do heartNow.addHeart();
+        }
+        
+        do heartNow.draw();
+    
+        return;
+    }
+
+    /** Draw the score in the screen */
+    method void drawScore(){
+        do Output.moveCursor(1,3);
+        do Output.printString("score: ");
+        do Output.moveCursor(1,10);
+        do Output.printInt(score);
+        return; 
+    }
+
+    /** Draw the level now in the screen*/
+    method void drawLevel(){
+        do Output.moveCursor(1,23);
+        do Output.printString("level: ");
+        do Output.moveCursor(1,30);
+        do Output.printInt((score/500)+1);  
+        return;    
+    }
+
+    /** increase the level by increase the speed of the cheeses */
+    method void goToNextLevel(){
+        do c1.increaseSpeed();
+        do c2.increaseSpeed();
+        do c3.increaseSpeed();
+        let nextChange=nextChange+500;
+        do drawLevel();
+        return;
+    }
+
+    /**Get the speed to start the game with it*/
+    method int getSpeed() {
+        var int m;
+        do Output.moveCursor(5, 0);
+        let m = Keyboard.readInt("insert speed (1-6): or insert 7 for default, in finish press Enter");
+        while (((m<1)|(m>6)) & ~(m=7)){
+            do Screen.clearScreen();           
+            do Output.moveCursor(6, 20);
+            do Output.printString("unvalid speed.");
+            do Output.moveCursor(5, 0);
+            let m = Keyboard.readInt("insert speed (1-6): or insert 7 for default, in finish press Enter");
+        }
+        do Screen.clearScreen();  
+        return m;
+    }
+
+    method void run(){
+        var char key;
+        var int speed;
+
+        let speed= getSpeed()*40;
+        if(~(speed=280)){
+            do c1.setSpeed(speed);
+            do c2.setSpeed(speed);
+            do c3.setSpeed(speed);
+            do giftHeart.setSpeed(speed/2);
+        }
+
+        do Screen.setColor(true);
+        do Screen.drawLine(0,190,511,190);
+        
+        do drawScore();
+
+        do drawLevel();   
+
+        do drawHeart(0);
+
+        do mickey.draw();
+        
+        
+        //while the game is running
+        while (lifes>0){
+            let key = Keyboard.keyPressed();
+
+            //if not type on the upArrow or the downArrow
+            while(~(key=131) & ~(key=133) & (lifes>0)){
+                let key = Keyboard.keyPressed();
+                do moveObstacle();
+                let score=score+10;
+
+                if(score=nextChange){
+                   do goToNextLevel();
+                }
+
+                if(score>finishGameScore){
+                    let lifes=0;
+                    do Output.moveCursor(10,20);
+                    do Output.printString("you win!! :)"); 
+                    return;
+                }
+               
+                do drawScore();                
+            }
+            
+            if(key=131){
+                //jump up
+                do jumpMickey(true);
+            }
+
+            if(key=133){
+                //go down
+                do jumpMickey(false);
+            }
+        } 
+        do Output.moveCursor(6,20);
+        do Output.printString("game over :(");    
+        do finishGame();
+          
+        return;
+    }
+
+
+    
+    /**Makes mickey jump up or down*/
+    method void jumpMickey(boolean jumpDown){
+        
+        var int i;
+        let i=0;
+        while ((i<4) & (lifes>0) ){
+            if(jumpDown){
+            do mickey.jumpUp();
+            }
+            else{
+                do mickey.jumpDown();
+            }
+            do moveObstacle();
+            let score=score+10;
+
+            if(score=nextChange){
+                do goToNextLevel();
+            }
+
+            if(score>finishGameScore){
+                let lifes=0;
+                do Output.moveCursor(10,20);
+                do Output.printString("you win!! :)"); 
+                return;
+            }
+               
+            do drawScore();    
+            let i=i+1;
+        }
+
+        let i=0;
+
+        while ((i<4) & (lifes>0)){
+            if(jumpDown){
+                do mickey.jumpDown();
+            }
+            else{
+                do mickey.jumpUp();
+            }
+            do moveObstacle();
+            let score=score+10;
+
+            if(score=nextChange){
+                do goToNextLevel();
+            }
+
+            if(score>finishGameScore){
+                let lifes=0;
+                do Output.moveCursor(10,20);
+                do Output.printString("you win!! :)"); 
+                return;
+            }          
+            do drawScore();
+            let i=i+1;
+        }
+        do Screen.drawLine(0,190,511,190);
+        return;
+    }
+
+   //move the Cheese and show new Cheese if needs or giftHeart
+    method void moveObstacle() {
+        
+        var int c1Position;
+        var int c2Position;
+        var int c3Position;
+        var int HeartPosition;
+
+        var int micPosition;
+        
+        //if c1 show in the screen
+        if(isc1){
+            do c1.move();
+            let c1Position=c1.getPosition();
+            let micPosition=mickey.getPosition();
+
+            //if c1 is in the middle of the screen- show the next cheese
+            if(c1Position<230){
+                
+                //check which cheese need to show now- c3 or c2
+                if(whichCtoOn1){
+                    let isc2=true;
+                    let isC2Crush=false;
+                }
+                else{
+                    let isc3=true;
+                    let isC3Crush=false;
+                }
+            }
+
+            //check if the mickey crush with the cheese
+            if(c1Position<32){
+                if(micPosition>135){
+                    //if it the first crush in this time- update the game's life
+                    if(~(isC1Crush)){
+                        let lifes=lifes-1;
+                        do drawHeart(1);
+                        let isC1Crush=true;
+                    }
+                }
+            }
+
+            //hide c1 from the screen
+            if(c1Position<0){
+
+                if(whichCtoOn1){ 
+                    let whichCtoOn1=false;
+                }
+                else{
+                    let whichCtoOn1=true;
+                }
+                let isc1=false;
+                do c1.setxPosition(480);
+                do c1.clear();
+            }
+            
+        }
+
+        //if c2 show in the screen
+        if(isc2){
+            do c2.move();
+            let c2Position=c2.getPosition();
+            let micPosition=mickey.getPosition();
+
+            //if c2 is in the middle of the screen- show the next cheese
+            if(c2Position<230){
+                //check which cheese need to show now- c3 or c1
+                if(whichCtoOn2){
+                    let isc3=true;
+                    let isC3Crush=false;
+                }
+                else{
+                    let isc1=true;
+                }
+            }
+
+            //check if the mickey crush with the cheese
+            if( c2Position<32){
+            
+                if(micPosition>135){
+                    //if it the first crush in this time- update the game's life
+                   if(~(isC2Crush)){
+                        let lifes=lifes-1;
+                        do drawHeart(1);
+                        let isC2Crush=true;
+                    }
+                }
+            }
+
+            //hide c2 from the screen
+            if(c2Position<0){
+                if(whichCtoOn2){
+                    let whichCtoOn2=false;
+                }
+                else{
+                    let whichCtoOn2=true;
+                }
+                let isc2=false;
+                do c2.setxPosition(480);
+                do c2.clear();
+            }
+            
+        }
+
+        //if c3 show in the screen
+        if(isc3){
+            do c3.move();
+            let c3Position=c3.getPosition();
+            let micPosition=mickey.getPosition();
+
+            //if c3 is in the middle of the screen- show the next cheese
+            if(c3Position<180){
+                
+                //if it is the time to show the giftHeart
+                if((score>nextHeart) & ~(isc1) ){
+                    let isHeart=true;
+                    let isHeartCrush=false;
+                    let nextHeart=4000+nextHeart;
+                }
+                if(~(isHeart)){
+                    let isc1=true;
+                    let isC1Crush=false;
+                
+                }
+            }
+
+            //check if the mickey crush with the cheese
+            if( c3Position<32 ){ 
+                if(micPosition<151){
+                    //if it the first crush in this time- update the game's life
+                    if(~(isC3Crush)){
+                        let lifes=lifes-1;
+                        do drawHeart(1);
+                        let isC3Crush=true;
+                    }
+                }
+            }
+            //hide c3 from the screen
+            if(c3Position<0){
+                let isc3=false;
+                do c3.setxPosition(480);
+                do c3.clear();
+            }
+            
+        }
+
+        //if heart show in the screen
+        if(isHeart){
+            do giftHeart.move();
+            let HeartPosition=giftHeart.getPosition();
+            let micPosition=mickey.getPosition();
+
+            //if heart is in the start of the screen- show the c1 cheese
+            if(HeartPosition<350){
+                let isc1=true;
+                let isC1Crush=false;
+            }
+
+            //check if the mickey crush with the heart
+            if( HeartPosition<33 ){ 
+                if(micPosition>189){
+                    //if it the first crush in this time- update the game's life and remove heart from the screen
+                    if(~(isHeartCrush)){
+                        let lifes=lifes+1;
+                        do drawHeart(2);
+                        let isHeartCrush=true;
+                        let isHeart=false;
+                        do giftHeart.setxPosition(480);
+                        do giftHeart.clear();
+                    }
+                }
+            }
+
+            //hide heart from the screen
+            if(HeartPosition<0){
+                let isHeart=false;
+                do giftHeart.setxPosition(480);
+                do giftHeart.clear();
+            }          
+        }
+        return;
+    }
+
+    method void finishGame(){
+        var int key;
+        do Output.moveCursor(10,10);
+        do Output.printString("To play again press Enter, to finish press Space");
+        let key=Keyboard.keyPressed();
+        while(~(key=128) & ~(key=32)){
+            let key=Keyboard.keyPressed();
+        }
+        if(key=128){
+            //start the game again
+            do initalize();
+            do run();
+            return;
+        }
+        else {
+            return;
+        }
+    }
+}

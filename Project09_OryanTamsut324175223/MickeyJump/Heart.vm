@@ -1,0 +1,274 @@
+function Heart.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+pop this 2
+push argument 0
+pop this 1
+push constant 30
+pop this 3
+push argument 2
+pop this 4
+push pointer 0
+return
+function Heart.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Heart.clear 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Heart.draw 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 4
+lt
+not
+if-goto WHILE_END0
+push constant 16384
+push constant 32
+push this 1
+call Math.multiply 2
+push this 0
+push constant 16
+push local 1
+call Math.multiply 2
+add
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 96
+add
+push constant 7280
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 16120
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 25484
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 24844
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 12312
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 6192
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 3168
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 1728
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 896
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 256
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Heart.clear 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 4
+lt
+not
+if-goto WHILE_END0
+push constant 16384
+push constant 32
+push this 1
+call Math.multiply 2
+push this 0
+push constant 16
+push local 1
+call Math.multiply 2
+add
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Heart.move 0
+push argument 0
+pop pointer 0
+push this 3
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call Heart.clear 1
+pop temp 0
+push this 0
+push constant 16
+sub
+pop this 0
+push pointer 0
+call Heart.draw 1
+pop temp 0
+push constant 0
+return
+function Heart.setxPosition 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Heart.clear 1
+pop temp 0
+push argument 1
+pop this 0
+push pointer 0
+call Heart.draw 1
+pop temp 0
+push constant 0
+return
+function Heart.getPosition 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Heart.addHeart 0
+push argument 0
+pop pointer 0
+push this 4
+push constant 1
+add
+pop this 4
+push constant 0
+return
+function Heart.removeHeart 0
+push argument 0
+pop pointer 0
+push this 4
+push constant 1
+sub
+pop this 4
+push constant 0
+return
+function Heart.setSpeed 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 3
+push constant 0
+return

@@ -1,0 +1,689 @@
+function Mickey.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push constant 150
+pop this 0
+push pointer 0
+return
+function Mickey.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Mickey.drawPart0 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 0
+call Math.multiply 2
+push constant 16
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 496
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 1016
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 2044
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 4094
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 4094
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 2
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 4
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 4
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 32760
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Mickey.drawPart1 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 0
+call Math.multiply 2
+push constant 32
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 160
+add
+push constant 511
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 511
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 254
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 254
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 61
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 19
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Mickey.drawPart2 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 0
+push constant 16
+add
+call Math.multiply 2
+push constant 16
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 64
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 60
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 62
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 16446
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 16447
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 32705
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 32738
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 28
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 24
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 8
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Mickey.drawPart3 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 0
+push constant 16
+add
+call Math.multiply 2
+push constant 32
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 3
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 510
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 497
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Mickey.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Mickey.drawPart0 1
+pop temp 0
+push pointer 0
+call Mickey.drawPart1 1
+pop temp 0
+push pointer 0
+call Mickey.drawPart2 1
+pop temp 0
+push pointer 0
+call Mickey.drawPart3 1
+pop temp 0
+push constant 0
+return
+function Mickey.clear 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 0
+call Math.multiply 2
+push constant 16
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push pointer 0
+push local 0
+call Mickey.drawWhite 2
+pop temp 0
+push constant 16384
+push constant 32
+push this 0
+call Math.multiply 2
+push constant 32
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push pointer 0
+push local 0
+call Mickey.drawWhite 2
+pop temp 0
+push constant 16384
+push constant 32
+push this 0
+push constant 16
+add
+call Math.multiply 2
+push constant 16
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push pointer 0
+push local 0
+call Mickey.drawWhite 2
+pop temp 0
+push constant 16384
+push constant 32
+push this 0
+push constant 16
+add
+call Math.multiply 2
+push constant 32
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push pointer 0
+push local 0
+call Mickey.drawWhite 2
+pop temp 0
+push constant 0
+return
+function Mickey.drawWhite 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Mickey.jumpUp 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Mickey.clear 1
+pop temp 0
+push this 0
+push constant 15
+sub
+pop this 0
+push pointer 0
+call Mickey.draw 1
+pop temp 0
+push constant 0
+return
+function Mickey.jumpDown 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Mickey.clear 1
+pop temp 0
+push this 0
+push constant 15
+add
+pop this 0
+push pointer 0
+call Mickey.draw 1
+pop temp 0
+push constant 0
+return
+function Mickey.setyPosition 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Mickey.clear 1
+pop temp 0
+push argument 1
+pop this 0
+push pointer 0
+call Mickey.draw 1
+pop temp 0
+push constant 0
+return
+function Mickey.getPosition 0
+push argument 0
+pop pointer 0
+push this 0
+return

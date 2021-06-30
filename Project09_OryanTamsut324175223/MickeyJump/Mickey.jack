@@ -1,0 +1,178 @@
+class Mickey{
+
+    field int yPosition;
+    
+
+    constructor Mickey new() {
+        //init the mickey fields
+        let yPosition=150;
+        return this;
+    }
+
+    /**delete the mickey*/
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+
+    method void drawPart0(){
+        var int memAddress;
+        let memAddress = 16384+((32*(yPosition))+(16/16));
+        do Memory.poke(memAddress+0, 496);
+        do Memory.poke(memAddress+32, 1016);
+        do Memory.poke(memAddress+64, 2044);
+        do Memory.poke(memAddress+96, 4094);
+        do Memory.poke(memAddress+128, 4094);
+        do Memory.poke(memAddress+160, -2);
+        do Memory.poke(memAddress+192, -4);
+        do Memory.poke(memAddress+224, -4);
+        do Memory.poke(memAddress+256, 32760);
+        do Memory.poke(memAddress+288, -16);
+        do Memory.poke(memAddress+320, -256);
+        do Memory.poke(memAddress+352, -256);
+        do Memory.poke(memAddress+384, -256);
+        do Memory.poke(memAddress+416, -256);
+        do Memory.poke(memAddress+448, -128);
+        do Memory.poke(memAddress+480, -128);
+        return;
+    }
+
+
+    method void drawPart1(){
+        var int memAddress;
+        let memAddress = 16384+((32*(yPosition))+(32/16));
+        do Memory.poke(memAddress+160, 511);
+        do Memory.poke(memAddress+192, 511);
+        do Memory.poke(memAddress+224, 254);
+        do Memory.poke(memAddress+256, 254);
+        do Memory.poke(memAddress+288, 255);
+        do Memory.poke(memAddress+320, 127);
+        do Memory.poke(memAddress+352, 127);
+        do Memory.poke(memAddress+384, 61);
+        do Memory.poke(memAddress+416, 19);
+        do Memory.poke(memAddress+448, 15);
+        do Memory.poke(memAddress+480, 1);
+        return;
+    }
+
+    method void drawPart2(){
+        var int memAddress;
+        let memAddress = 16384+((32*(yPosition+16))+(16/16));
+        do Memory.poke(memAddress+0, -128);
+        do Memory.poke(memAddress+32, -128);
+        do Memory.poke(memAddress+64, -128);
+        do Memory.poke(memAddress+96, -128);
+        do Memory.poke(memAddress+128, -64);
+        do Memory.poke(memAddress+160, -60);
+        do Memory.poke(memAddress+192, -62);
+        do Memory.poke(memAddress+224, -16446);
+        do Memory.poke(memAddress+256, -16447);
+        do Memory.poke(memAddress+288, 32705);
+        do Memory.poke(memAddress+320, 32738);
+        do Memory.poke(memAddress+352, -28);
+        do Memory.poke(memAddress+384, -24);
+        do Memory.poke(memAddress+416, -8);
+        do Memory.poke(memAddress+448, -16);
+        do Memory.poke(memAddress+480, -32);
+        return;
+    }
+
+
+    method void drawPart3(){
+        var int memAddress;
+        let memAddress = 16384+((32*(yPosition+16))+(32/16));
+        do Memory.poke(memAddress+0, 3);
+        do Memory.poke(memAddress+32, 7);
+        do Memory.poke(memAddress+64, 15);
+        do Memory.poke(memAddress+96, 31);
+        do Memory.poke(memAddress+128, 63);
+        do Memory.poke(memAddress+160, 63);
+        do Memory.poke(memAddress+192, 127);
+        do Memory.poke(memAddress+224, 127);
+        do Memory.poke(memAddress+256, 255);
+        do Memory.poke(memAddress+288, 255);
+        do Memory.poke(memAddress+320, 255);
+        do Memory.poke(memAddress+352, 510);
+        do Memory.poke(memAddress+384, 497);
+        do Memory.poke(memAddress+416, 1023);
+        do Memory.poke(memAddress+448, 1023);
+	    do Memory.poke(memAddress+480, 1023);
+        return;
+    }
+
+
+    /**draw the mickey in the screen*/
+    method void draw() {
+       do drawPart0();
+       do drawPart1();
+       do drawPart2();
+       do drawPart3();
+       return;
+    }
+
+    /**clear the mickey from the screen*/
+    method void clear(){
+        var int memAddress;
+        let memAddress = 16384+((32*(yPosition))+(16/16));
+        do drawWhite(memAddress);
+        let memAddress = 16384+((32*(yPosition))+(32/16));
+        do drawWhite(memAddress);
+        let memAddress = 16384+((32*(yPosition+16))+(16/16));
+        do drawWhite(memAddress);
+        let memAddress = 16384+((32*(yPosition+16))+(32/16));
+        do drawWhite(memAddress);
+        return;
+    }
+
+
+    method void drawWhite(int memAddress){
+        do Memory.poke(memAddress+0, 0);
+        do Memory.poke(memAddress+32, 0);
+        do Memory.poke(memAddress+64, 0);
+        do Memory.poke(memAddress+96, 0);
+        do Memory.poke(memAddress+128, 0);
+        do Memory.poke(memAddress+160, 0);
+        do Memory.poke(memAddress+192, 0);
+        do Memory.poke(memAddress+224, 0);
+        do Memory.poke(memAddress+256, 0);
+        do Memory.poke(memAddress+288, 0);
+        do Memory.poke(memAddress+320, 0);
+        do Memory.poke(memAddress+352, 0);
+        do Memory.poke(memAddress+384, 0);
+        do Memory.poke(memAddress+416, 0);
+        do Memory.poke(memAddress+448, 0);
+        do Memory.poke(memAddress+480, 0);
+        return;
+    }
+
+    /**jump the mickey up*/
+    method void jumpUp() {
+        do clear();
+        let yPosition=yPosition - 15;
+        do draw();
+        return;
+    }
+
+    /**turn down the mouse*/
+    method void jumpDown(){
+        do clear();
+        let yPosition=yPosition+15;
+        do draw();
+        return;
+    }
+
+    /**change the y position of the mickey*/
+    method void setyPosition(int newyPosition){
+        do clear();
+        let yPosition=newyPosition;
+        do draw();
+        return;  
+    }
+
+    /**get the y position of the mickey*/
+    method int getPosition(){
+        return yPosition;
+    }
+
+}

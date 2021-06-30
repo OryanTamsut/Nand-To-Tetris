@@ -1,0 +1,239 @@
+function Cheese.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push constant 480
+pop this 0
+push constant 0
+pop this 2
+push argument 0
+pop this 1
+push constant 100
+pop this 3
+push pointer 0
+return
+function Cheese.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Cheese.clear 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Cheese.increaseSpeed 0
+push argument 0
+pop pointer 0
+push this 3
+push constant 20
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 3
+push constant 10
+sub
+pop this 3
+label IF_FALSE0
+push constant 0
+return
+function Cheese.draw 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 1
+push constant 16
+add
+call Math.multiply 2
+push this 0
+push constant 16
+add
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 160
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 29696
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 32000
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 24384
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 30416
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 32760
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 28124
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 32766
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Cheese.clear 1
+push argument 0
+pop pointer 0
+push constant 16384
+push constant 32
+push this 1
+push constant 16
+add
+call Math.multiply 2
+push this 0
+push constant 16
+add
+push constant 16
+call Math.divide 2
+add
+add
+pop local 0
+push local 0
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Cheese.move 0
+push argument 0
+pop pointer 0
+push this 3
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call Cheese.clear 1
+pop temp 0
+push this 0
+push constant 16
+sub
+pop this 0
+push pointer 0
+call Cheese.draw 1
+pop temp 0
+push constant 0
+return
+function Cheese.setxPosition 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Cheese.clear 1
+pop temp 0
+push argument 1
+pop this 0
+push pointer 0
+call Cheese.draw 1
+pop temp 0
+push constant 0
+return
+function Cheese.getPosition 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Cheese.setSpeed 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 3
+push constant 0
+return

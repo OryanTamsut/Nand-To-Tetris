@@ -1,0 +1,116 @@
+class Heart{
+
+    field int xPosition;
+    field int yPosition;
+    field int type;
+    field int speed;
+    field int numHearts;
+   
+
+    constructor Heart new(int startPosition,int xPositionStart,int numHearts2) {
+        //init the heart fields
+        let xPosition=xPositionStart;
+        let type=0;
+        let yPosition=startPosition;
+        let speed=30;
+        let numHearts=numHearts2;
+       
+        return this;
+    }
+
+    /**delete the heart*/
+    method void dispose() {
+        do clear();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /**Draw the hearts */
+    method void draw() {
+        
+        var int memAddress;
+        var int j;
+        let j=0;
+       
+        while(j<numHearts){
+            let memAddress = 16384+((32*yPosition)+((xPosition+(16*j))/16));
+            do Memory.poke(memAddress+96, 7280);
+            do Memory.poke(memAddress+128, 16120);
+            do Memory.poke(memAddress+160, 25484);
+            do Memory.poke(memAddress+192, 24844);
+            do Memory.poke(memAddress+224, 12312);
+            do Memory.poke(memAddress+256, 6192);
+            do Memory.poke(memAddress+288, 3168);
+            do Memory.poke(memAddress+320, 1728);
+            do Memory.poke(memAddress+352, 896);
+            do Memory.poke(memAddress+384, 256);
+            let j=j+1;
+        }
+	    return;
+    }
+    
+
+    /** clear the hears*/
+    method void clear(){
+        var int memAddress;
+        var int i;
+        let i=0;
+        while(i<numHearts){
+            let memAddress = 16384+((32*yPosition)+((xPosition+(16*i))/16));
+            do Memory.poke(memAddress+96, 0);
+            do Memory.poke(memAddress+128, 0);
+            do Memory.poke(memAddress+160, 0);
+            do Memory.poke(memAddress+192, 0);
+            do Memory.poke(memAddress+224, 0);
+            do Memory.poke(memAddress+256, 0);
+            do Memory.poke(memAddress+288, 0);
+            do Memory.poke(memAddress+320, 0);
+            do Memory.poke(memAddress+352, 0);
+            do Memory.poke(memAddress+384, 0);
+            let i=i+1;
+        }
+        return;
+    }
+
+    /**move the heart from the right to the left*/
+    method void move() {
+        do Sys.wait(speed);
+        do clear();
+        let xPosition=xPosition - 16;
+        do draw();
+        return;
+    }
+
+
+    /**change the x position of the cheese*/
+    method void setxPosition(int newxPosition){
+        do clear();
+        let xPosition=newxPosition;
+        do draw();
+        return;  
+    }
+
+    /**get the x position of the cheese*/
+    method int getPosition(){
+        return xPosition;
+    }
+
+    /**add heart to num hearts*/
+    method void addHeart(){
+        let numHearts=numHearts+1;
+        return;
+    }
+
+    /**remove heart from the num hearts*/
+    method void removeHeart(){
+        let numHearts=numHearts-1;
+        return;
+    }
+
+
+    method void setSpeed(int speed2){
+        let speed=speed2;
+        return;
+    }
+
+}
