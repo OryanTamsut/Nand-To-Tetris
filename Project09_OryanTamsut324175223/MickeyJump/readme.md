@@ -3,7 +3,7 @@
 Poisoned yellow cheeses are thrown at our mouse and he must avoid them, any collision with poisoned cheese takes the life out of the mouse,\
 from time to time we receive as a gift another life that needs to be captured.
 
-## how do you play?
+## how to play?
 At the beginning of the game, the game instructions appear in an abbreviated form. To skip them, press Inter.\
 After selecting the speed the game starts. During the game the speed and the stages increases.\
 During the game, cheeses that he must dodge are thrown at the mouse.
@@ -22,7 +22,7 @@ Each collision with the cheese decrease the life of the mickey, at the beginning
 If you manage to reach 10000 points then it is a win 😊, if you end your life before you reach 10000 points then it is a loss 😥 ..\
 In any case you can always start playing again by pressing the Enter key after the loss announcement.
 
-
+## Animation
 https://user-images.githubusercontent.com/86181633/133155532-77d02b7c-a0f6-4671-94be-30a705a7dfd1.mp4
 
 
