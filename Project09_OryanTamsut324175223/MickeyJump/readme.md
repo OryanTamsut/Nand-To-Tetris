@@ -22,4 +22,8 @@ Each collision with the cheese decrease the life of the mickey, at the beginning
 If you manage to reach 10000 points then it is a win 😊, if you end your life before you reach 10000 points then it is a loss 😥 ..\
 In any case you can always start playing again by pressing the Enter key after the loss announcement.
 
+
+https://user-images.githubusercontent.com/86181633/133155532-77d02b7c-a0f6-4671-94be-30a705a7dfd1.mp4
+
+
 ### Enjoy !!!
