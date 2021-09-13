@@ -3,4 +3,4 @@
 project 6: Assembler\
 project 7-8: vmTranslator\
 project 9: project09\
-More details in the subfolders\
+More details in the subfolders
