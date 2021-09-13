@@ -15,7 +15,7 @@ The high cheese (left) to dodge it- has to bend below it by pressing the down ar
 and also hold the key pressed long enough. At high speed this is not necessary.)
 
 Each collision with the cheese decrease the life of the mickey, at the beginning of the game there are 3 lives and during the game you get more lives,\
-![image](https://user-images.githubusercontent.com/86181633/133144850-6fdaf8b1-a11c-4d16-ae5e-5b3a9a2eeff7.png)
+![image](https://user-images.githubusercontent.com/86181633/133144850-6fdaf8b1-a11c-4d16-ae5e-5b3a9a2eeff7.png)\
 (the heart in the picture) to collect them you have to click on the down arrow.
 
 ## How do you win or lose?
